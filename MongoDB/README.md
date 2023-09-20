@@ -18,7 +18,7 @@ Column - field
 4.use <dataBaseName> (wiil create databse and will switch to that)
 
 //To see all the data of a collection
-4- db.collection.find() or db.collection.findAll()
+4- db.collection.find() or db.collection.findAll() or db.collection.finOne({})
 
 //To insert a document in collection
 5- db.collection.insertOne({name:"sachin",age:23})
@@ -40,3 +40,25 @@ Column - field
 
 //Projection of field - Receive only required fileld in JSON data
 8- db.collection.find({},{reuiredField:1,notRequiredField:0})
+
+//To count the number of documents in row
+9- db.collection.count()
+
+//To receive the res in the form of array
+10- db.collection.find({}).toArray() - will return the array of json.
+cant use it with findOne().
+
+//To sort the response in ascending or descending order.
+11- db.collection.find().sort({field:-1 OR ,field:1})
+    if field:-1 will sort data in descending order on te basis of given field value
+    if field:1 will sort data in asceending order on te basis of given field value
+
+//To delete document from coleection
+12- db.collection.deleteOne({field:value}) - will delete one matching record
+    db.collection.deleteMany({field:value}) - will delele all matching record
+
+//To update the record or row in collection
+13- db.collection.updateOne({matchinCondition},{$set:{filed1:value1,filed2:value2}})  
+    db.student.updateOne({id:123},{$set:{name:"Sachin",company:"Want to switch"}})  
+    db.collection.updateMany({},{$set:{}}) - same as updateOne() but will update all matching data.
+
