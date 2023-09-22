@@ -31,10 +31,6 @@ Column - field
 // filter data from collection
 7- db.collection.find({condition}) exa - db.student.find({section:"A"}) -will return all student of section A.
 
-//using AND ,OR condition
-8- db.collection.find({$and:[{cond1},{cond2},..]})
-   db.collection.find({$or:[{cond1,{cond2},...]})
-
 //receive limited response from data
 8- db.collection.find({}).limit(Number)
 
@@ -60,5 +56,19 @@ cant use it with findOne().
 //To update the record or row in collection
 13- db.collection.updateOne({matchinCondition},{$set:{filed1:value1,filed2:value2}})  
     db.student.updateOne({id:123},{$set:{name:"Sachin",company:"Want to switch"}})  
-    db.collection.updateMany({},{$set:{}}) - same as updateOne() but will update all matching data.
+    db.collection.updateMany({expression},{$set:{}}) - same as updateOne() but will update all matching data.
+
+-----------------------------------OPERATORS----------------------------------------------
+//using AND ,OR operator
+8- db.collection.find({$and:[{cond1},{cond2},..]})
+   db.collection.find({$or:[{cond1,{cond2},...]})
+   Example - db.student.find({$and:[{age:{$lt:20}},{age:{$gt:15}}]})
+
+//!=($ne), <($lt), >($gt), ==($eq), <=($lte), >=($gte) operator
+14- db.collection.find({Score:{$lt:33}}) return all record having Score<33
+   db.collection.find({Score:{$gt:85}}) return all records having Score>85
+   db.collection.find({Score:{$ne:0}})  return all record except Score==0
+   db.collection.find({Name:{$eq:"Sachin"}})
+
+
 
